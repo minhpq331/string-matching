@@ -2,6 +2,8 @@
 
 namespace components\services\stringmatching;
 
+use components\services\stringmatching\BaseStringMatchingAlgorithm;
+
 /**
  * NaiveAlgorithm implement the naive algorithm in string matching.
  *
@@ -21,8 +23,16 @@ class NaiveAlgorithm extends BaseStringMatchingAlgorithm
         $result = array();
 
         for ($i = 0; $i <= $baseStringLength - $patternLength; $i++) {
-            $tmpSubString = substr($baseStringLength, $i, $patternLength);
-            if ($tmpSubString === $this->pattern) {
+            $isMatch = true;
+            for ($k = 0; $k < $patternLength; $k++) {
+                $isMatch = $isMatch && ($this->pattern[$k] === $this->baseString[$i + $k]);
+                if (!$isMatch) {
+                    // break the loop if any character is not matched to reduce total loop number
+                    break;
+                }
+            }
+
+            if ($isMatch) {
                 $result[] = $i;
             }
         }

@@ -123,6 +123,10 @@ abstract class BaseStringMatchingAlgorithm implements Configurable
         if ($patternLength === 0) {
             for ($i = 0; $i <= $baseStringLength; $i++) {
                 $result[] = $i;
+                if (!$this->matchMultiple) {
+                    // break the loop if only first match is considered
+                    break;
+                }
             }
             return $result;
         }

@@ -2,6 +2,7 @@
 
 namespace components\services\stringmatching;
 
+use components\services\stringmatching\NaiveAlgorithm;
 use yii\base\NotSupportedException;
 
 /**
