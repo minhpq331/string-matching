@@ -3,7 +3,7 @@
 namespace app\components\helpers\stringmatching;
 
 use app\components\helpers\stringmatching\NaiveAlgorithm;
-use yii\base\NotSupportedException;
+use app\components\helpers\stringmatching\NotImplementedAlgorithmException;
 
 /**
  * Algorithm Factory to return a string matching algorithm implemention
@@ -24,7 +24,7 @@ class AlgorithmFactory
      * @param  array                        $options    Options to init Algorithm
      * @return BaseStringMatchingAlgorithm
      */
-    public static function make($algorithm, $options)
+    public static function make($algorithm, $options = array())
     {
         switch ($algorithm) {
             case self::ALGORITHM_NAIVE:
@@ -34,7 +34,7 @@ class AlgorithmFactory
                 return new KMPAlgorithm($options);
                 break;
             default:
-                throw new NotSupportedException("{$algorithm} is not implemented.");
+                throw new NotImplementedAlgorithmException("{$algorithm} is not implemented.");
                 break;
         }
     }
