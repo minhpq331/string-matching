@@ -18,7 +18,7 @@ class SiteController extends Controller
     {
         $model = new StringMatchingForm();
         $matchingResult = array();
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $matchingResult = $model->process();
         }
         return $this->render('index', [
