@@ -27,13 +27,13 @@ abstract class BaseStringMatchingAlgorithm implements Configurable
      * Base string to search in
      * @var string
      */
-    protected $baseString;
+    public $baseString;
 
     /**
      * Pattern string to search for
      * @var string
      */
-    protected $pattern;
+    public $pattern;
 
     /**
      * Class constructor
