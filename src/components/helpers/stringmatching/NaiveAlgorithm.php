@@ -1,8 +1,8 @@
 <?php
 
-namespace components\services\stringmatching;
+namespace app\components\helpers\stringmatching;
 
-use components\services\stringmatching\BaseStringMatchingAlgorithm;
+use app\components\helpers\stringmatching\BaseStringMatchingAlgorithm;
 
 /**
  * NaiveAlgorithm implement the naive algorithm in string matching.
@@ -33,7 +33,7 @@ class NaiveAlgorithm extends BaseStringMatchingAlgorithm
             }
 
             if ($isMatch) {
-                $result[] = $i;
+                $result[] = $i + 1;
             }
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace components\services\stringmatching;
+namespace app\components\helpers\stringmatching;
 
 use Yii;
 use yii\base\Configurable;
@@ -45,7 +45,7 @@ abstract class BaseStringMatchingAlgorithm implements Configurable
     public function __construct($config = [])
     {
         if (!empty($config)) {
-            Yii::configure($config);
+            Yii::configure($this, $config);
         }
     }
 
@@ -69,16 +69,8 @@ abstract class BaseStringMatchingAlgorithm implements Configurable
         // Apply pre-modification (if any)
         $this->prepareInput();
 
-        // Check some special cases
-        $specialCaseResult = $this->checkSpecialCases();
-
-        if (null !== $specialCaseResult) {
-            // result is one of special cases
-            return $specialCaseResult;
-        } else {
-            // process matching use algorithm
-            return $this->searchUseAlgorithm();
-        }
+        // process matching use algorithm
+        return $this->searchUseAlgorithm();
     }
 
     /**
@@ -105,42 +97,13 @@ abstract class BaseStringMatchingAlgorithm implements Configurable
         if (!is_string($this->baseString) || !is_string($this->pattern)) {
             return false;
         }
-    }
 
-    /**
-     * Check if the input is one of special cases
-     *
-     * @return array|null Return array if the input is one of special case, null otherwise
-     */
-    protected function checkSpecialCases()
-    {
-        $baseStringLength = strlen($this->baseString);
-        $patternLength = strlen($this->pattern);
-
-        $result = array();
-
-        // match all position
-        if ($patternLength === 0) {
-            for ($i = 0; $i <= $baseStringLength; $i++) {
-                $result[] = $i;
-                if (!$this->matchMultiple) {
-                    // break the loop if only first match is considered
-                    break;
-                }
-            }
-            return $result;
+        // This implemention does not accept empty string
+        if (empty($this->baseString) || empty($this->pattern)) {
+            return false;
         }
 
-        // Pattern length is larger than base string length, should return result immediately
-        if ($patternLength >= $baseStringLength) {
-            if ($this->pattern === $this->baseString) {
-                $result[] = 0;
-            }
-            return $result;
-        }
-
-        // No special case occured
-        return null;
+        return true;
     }
 
     /**

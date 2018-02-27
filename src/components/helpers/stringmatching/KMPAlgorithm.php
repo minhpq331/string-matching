@@ -1,8 +1,8 @@
 <?php
 
-namespace components\helpers\stringmatching;
+namespace app\components\helpers\stringmatching;
 
-use components\services\stringmatching\BaseStringMatchingAlgorithm;
+use app\components\helpers\stringmatching\BaseStringMatchingAlgorithm;
 
 /**
  * KMPAlgorithm implement the Knuth-Morris-Pratt algorithm in string matching.
@@ -17,25 +17,29 @@ class KMPAlgorithm extends BaseStringMatchingAlgorithm
      */
     protected function searchUseAlgorithm()
     {
-        $patternLength = strlen($this->pattern);
         $baseStringLength = strlen($this->baseString);
+        $patternLength = strlen($this->pattern);
 
         $result = array();
         $prefixes = $this->generatePrefixes();
 
         $k = 0;
         $m = 0;
-        for ($i = 0; $i < $patternLength; $i++) {
-            while ($k > 0 && $this->baseString[$k] !== $this->pattern[$i]) {
+        for ($i = 0; $i < $baseStringLength; $i++) {
+            while ($k > 0 && $this->pattern[$k] !== $this->baseString[$i]) {
                 $k = $prefixes[$k];
             }
-            if ($this->baseString[$k] === $this->pattern[$i]) {
+            if ($this->pattern[$k] === $this->baseString[$i]) {
                 $k = $k + 1;
             }
-            if ($k == $baseStringLength) {
-                $result[] = $i - $baseStringLength + 1;
+            if ($k === $patternLength) {
+                $result[] = $i - $patternLength + 2;
                 $m = $i;
                 $k = $prefixes[$k];
+                if (!$this->matchMultiple) {
+                    // break if found a match
+                    break;
+                }
             }
         }
 
@@ -50,18 +54,18 @@ class KMPAlgorithm extends BaseStringMatchingAlgorithm
      */
     private function generatePrefixes()
     {
-        $baseStringLength = strlen($this->baseString);
+        $patternLength = strlen($this->pattern);
 
         $result = array();
 
         $result[1] = 0;
 
         $k = 0;
-        for ($i = 1; $i < $baseStringLength; $i++) {
-            while ($k > 0 && $this->baseString[$k] !== $this->baseString[$i]) {
+        for ($i = 1; $i < $patternLength; $i++) {
+            while ($k > 0 && $this->pattern[$k] !== $this->pattern[$i]) {
                 $k = $result[$k];
             }
-            if ($this->baseString[$k] === $this->baseString[$i]) {
+            if ($this->pattern[$k] === $this->pattern[$i]) {
                 $k = $k + 1;
             }
             $result[$i + 1] = $k;

@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\forms\StringMatchingForm;
+use Yii;
 use yii\web\Controller;
 
 class SiteController extends Controller
@@ -14,7 +16,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $model = new StringMatchingForm();
+        $matchingResult = array();
+        if ($model->load(Yii::$app->request->post())) {
+            $matchingResult = $model->process();
+        }
+        return $this->render('index', [
+            'model' => $model,
+            'matchingResult' => $matchingResult,
+        ]);
     }
 
 }

@@ -1,51 +1,53 @@
 <?php
 
+use app\components\helpers\stringmatching\AlgorithmFactory;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'String Matching Implemention';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
 
     <div class="body-content">
+        <div class="row">
+            <h1 class="text-center"><?=Html::encode($this->title);?></h1>
+        </div>
 
         <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <div class="col-sm-4 col-sm-offset-4">
+                <?php $form = ActiveForm::begin([
+    'id' => 'string-form',
+]);?>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                    <?=$form->field($model, 'baseString')->textarea(['autofocus' => true])?>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                    <?=$form->field($model, 'pattern')->textInput()?>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                    <?=$form->field($model, 'algorithm')->dropDownList(AlgorithmFactory::$ALLOWED_ALGORITHMS)?>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                    <?=$form->field($model, 'matchMultiple')->checkbox()?>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                    <?=$form->field($model, 'caseSensitive')->checkbox()?>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                    <div class="form-group">
+                        <label class="control-label">Result:</label>
+                        <div class="form-control-static">
+                            <?php if (empty($matchingResult)): ?>
+                                (empty result)
+                            <?php else: ?>
+                                <?=implode(', ', $matchingResult);?>
+                            <?php endif?>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <?=Html::submitButton('Submit', ['class' => 'btn btn-primary col-xs-12', 'name' => 'submit-button'])?>
+                    </div>
+
+                <?php ActiveForm::end();?>
             </div>
         </div>
 
