@@ -6,7 +6,7 @@ use app\components\helpers\textmatching\NaiveAlgorithm;
 use app\components\helpers\textmatching\NotImplementedAlgorithmException;
 
 /**
- * Algorithm Factory to return a string matching algorithm implemention
+ * Algorithm Factory to return a text matching algorithm implemention
  */
 class AlgorithmFactory
 {
