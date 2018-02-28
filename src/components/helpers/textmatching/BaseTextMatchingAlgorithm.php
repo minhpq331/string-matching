@@ -1,14 +1,14 @@
 <?php
 
-namespace app\components\helpers\stringmatching;
+namespace app\components\helpers\textmatching;
 
 use Yii;
 use yii\base\Configurable;
 
 /**
- * String-matching Algorithm Base class
+ * Text-matching Algorithm Base class
  */
-abstract class BaseStringMatchingAlgorithm implements Configurable
+abstract class BaseTextMatchingAlgorithm implements Configurable
 {
 
     /**

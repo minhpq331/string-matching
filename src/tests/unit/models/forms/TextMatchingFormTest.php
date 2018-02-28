@@ -1,10 +1,10 @@
 <?php
 namespace tests\models\forms;
 
-use app\components\helpers\stringmatching\AlgorithmFactory;
-use app\models\forms\StringMatchingForm;
+use app\components\helpers\textmatching\AlgorithmFactory;
+use app\models\forms\TextMatchingForm;
 
-class StringMatchingFormTest extends \Codeception\Test\Unit
+class TextMatchingFormTest extends \Codeception\Test\Unit
 {
     private $validAlgorithm;
 
@@ -17,7 +17,7 @@ class StringMatchingFormTest extends \Codeception\Test\Unit
 
     protected function _before()
     {
-        $this->model = new StringMatchingForm();
+        $this->model = new TextMatchingForm();
         $this->validAlgorithm = AlgorithmFactory::ALGORITHM_NAIVE;
     }
 

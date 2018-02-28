@@ -1,5 +1,5 @@
 <?php
-namespace tests\components\helpers\stringmatching;
+namespace tests\components\helpers\textmatching;
 
 class AlgorithmLogicTest extends \Codeception\Test\Unit
 {

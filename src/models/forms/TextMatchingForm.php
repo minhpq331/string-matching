@@ -2,13 +2,13 @@
 
 namespace app\models\forms;
 
-use app\components\helpers\stringmatching\AlgorithmFactory;
+use app\components\helpers\textmatching\AlgorithmFactory;
 use yii\base\Model;
 
 /**
- * StringMatchingForm present the ActiveForm for user to input
+ * TextMatchingForm present the ActiveForm for user to input
  */
-class StringMatchingForm extends Model
+class TextMatchingForm extends Model
 {
 
     public $algorithm = AlgorithmFactory::ALGORITHM_NAIVE;

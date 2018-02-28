@@ -1,6 +1,6 @@
-# Project Title
+# Text Matching Implemention
 
-Description about this project
+This project is a demo about implementation of different text matching algorithm in PHP.
 
 ## Getting Started
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace app\components\helpers\stringmatching;
+namespace app\components\helpers\textmatching;
 
-use app\components\helpers\stringmatching\NaiveAlgorithm;
-use app\components\helpers\stringmatching\NotImplementedAlgorithmException;
+use app\components\helpers\textmatching\NaiveAlgorithm;
+use app\components\helpers\textmatching\NotImplementedAlgorithmException;
 
 /**
  * Algorithm Factory to return a string matching algorithm implemention
@@ -19,10 +19,10 @@ class AlgorithmFactory
     );
 
     /**
-     * Make an instance of BaseStringMatchingAlgorithm based on selected algorithm
+     * Make an instance of BaseTextMatchingAlgorithm based on selected algorithm
      * @param  string                       $algorithm  Algorithm name
      * @param  array                        $options    Options to init Algorithm
-     * @return BaseStringMatchingAlgorithm
+     * @return BaseTextMatchingAlgorithm
      */
     public static function make($algorithm, $options = array())
     {

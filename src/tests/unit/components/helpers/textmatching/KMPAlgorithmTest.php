@@ -1,9 +1,9 @@
 <?php
-namespace components\helpers\stringmatching;
+namespace tests\components\helpers\textmatching;
 
-use tests\components\helpers\stringmatching\AlgorithmLogicTest;
+use tests\components\helpers\textmatching\AlgorithmLogicTest;
 
-class NaiveAlgorithmTest extends AlgorithmLogicTest
+class KMPAlgorithmTest extends AlgorithmLogicTest
 {
     /**
      * @var \UnitTester
@@ -12,7 +12,7 @@ class NaiveAlgorithmTest extends AlgorithmLogicTest
 
     protected function _before()
     {
-        $this->model = $this->getMockBuilder('app\components\helpers\stringmatching\NaiveAlgorithm')
+        $this->model = $this->getMockBuilder('app\components\helpers\textmatching\KMPAlgorithm')
             ->getMock();
     }
 

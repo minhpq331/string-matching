@@ -1,6 +1,6 @@
 <?php
 
-use app\components\helpers\stringmatching\AlgorithmFactory;
+use app\components\helpers\textmatching\AlgorithmFactory;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 

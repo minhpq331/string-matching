@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components\helpers\stringmatching;
+namespace app\components\helpers\textmatching;
 
 use yii\base\NotSupportedException;
 

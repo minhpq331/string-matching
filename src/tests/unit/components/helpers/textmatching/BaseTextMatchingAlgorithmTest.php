@@ -1,7 +1,7 @@
 <?php
-namespace tests\components\helpers\stringmatching;
+namespace tests\components\helpers\textmatching;
 
-class BaseStringMatchingAlgorithmTest extends \Codeception\Test\Unit
+class BaseTextMatchingAlgorithmTest extends \Codeception\Test\Unit
 {
     private $model;
 
@@ -12,7 +12,7 @@ class BaseStringMatchingAlgorithmTest extends \Codeception\Test\Unit
 
     protected function _before()
     {
-        $this->model = $this->getMockForAbstractClass('app\components\helpers\stringmatching\BaseStringMatchingAlgorithm');
+        $this->model = $this->getMockForAbstractClass('app\components\helpers\textmatching\BaseTextMatchingAlgorithm');
     }
 
     protected function _after()
@@ -28,14 +28,14 @@ class BaseStringMatchingAlgorithmTest extends \Codeception\Test\Unit
             'matchMultiple' => false,
             'caseSensitive' => true,
         );
-        $model = $this->getMockBuilder('app\components\helpers\stringmatching\BaseStringMatchingAlgorithm')
+        $model = $this->getMockBuilder('app\components\helpers\textmatching\BaseTextMatchingAlgorithm')
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
 
         $this->assertEquals($model->matchMultiple, !$options['matchMultiple']);
         $this->assertEquals($model->caseSensitive, !$options['caseSensitive']);
 
-        $reflectedClass = new \ReflectionClass('app\components\helpers\stringmatching\BaseStringMatchingAlgorithm');
+        $reflectedClass = new \ReflectionClass('app\components\helpers\textmatching\BaseTextMatchingAlgorithm');
         $reflectedClass->getConstructor()->invoke($model, $options);
 
         $this->assertEquals($model->matchMultiple, $options['matchMultiple']);

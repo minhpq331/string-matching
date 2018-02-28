@@ -1,15 +1,15 @@
 <?php
 
-namespace app\components\helpers\stringmatching;
+namespace app\components\helpers\textmatching;
 
-use app\components\helpers\stringmatching\BaseStringMatchingAlgorithm;
+use app\components\helpers\textmatching\BaseTextMatchingAlgorithm;
 
 /**
  * KMPAlgorithm implement the Knuth-Morris-Pratt algorithm in string matching.
  *
  * It loop through the base string to find any match
  */
-class KMPAlgorithm extends BaseStringMatchingAlgorithm
+class KMPAlgorithm extends BaseTextMatchingAlgorithm
 {
 
     /**

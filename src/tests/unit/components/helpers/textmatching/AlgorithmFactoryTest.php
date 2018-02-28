@@ -1,9 +1,9 @@
 <?php
-namespace components\helpers\stringmatching;
+namespace tests\components\helpers\textmatching;
 
-use app\components\helpers\stringmatching\AlgorithmFactory;
-use app\components\helpers\stringmatching\BaseStringMatchingAlgorithm;
-use app\components\helpers\stringmatching\NotImplementedAlgorithmException;
+use app\components\helpers\textmatching\AlgorithmFactory;
+use app\components\helpers\textmatching\BaseTextMatchingAlgorithm;
+use app\components\helpers\textmatching\NotImplementedAlgorithmException;
 
 class AlgorithmFactoryTest extends \Codeception\Test\Unit
 {
@@ -25,7 +25,7 @@ class AlgorithmFactoryTest extends \Codeception\Test\Unit
     {
         foreach (AlgorithmFactory::$ALLOWED_ALGORITHMS as $algorithmKey => $algorithmName) {
             $algorithm = AlgorithmFactory::make($algorithmKey);
-            $this->assertTrue($algorithm instanceof BaseStringMatchingAlgorithm);
+            $this->assertTrue($algorithm instanceof BaseTextMatchingAlgorithm);
         }
 
         $this->tester->expectException(NotImplementedAlgorithmException::class, function () {
