@@ -6,7 +6,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 
-$this->title = 'String Matching Implemention';
+$this->title = 'Text Matching Implemention';
 ?>
 <div class="site-index">
 
