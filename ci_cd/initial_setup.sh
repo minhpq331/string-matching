@@ -26,11 +26,15 @@ if [[ -f src/bower.json ]]; then
 fi
 
 
-# Initial setup all environment
-WEB_ROOT=src;
+# Log build signature and give it web-access, use in git CD phrase
+WEB_ROOT=src/web;
+WEB_ROOT_BACK=../..;
 if [[ ! -f "server_log/nfo.txt" ]]; then
     touch server_log/nfo.txt
 fi
 if [ ! -f "$WEB_ROOT/nfo.txt" ] && [ -f "server_log/nfo.txt" ]; then
-    ln -s `pwd`/server_log/nfo.txt `pwd`/$WEB_ROOT
+    if [[ -h "$WEB_ROOT/nfo.txt" ]]; then
+        rm -f $WEB_ROOT/nfo.txt
+    fi
+    ln -s $WEB_ROOT_BACK/server_log/nfo.txt $WEB_ROOT/nfo.txt
 fi
