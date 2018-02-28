@@ -28,7 +28,6 @@ System Requirements
 ```
 - PHP 5.6.x + CLI with common ext and `curl`, `PCRE support`
 - Composer
-
 ```
 
 Note: `pcre.jit` in php.ini must be set to `0` 
@@ -62,7 +61,6 @@ To test this project simply run below commands
 $ cd text-matching/src
 $ vendor/bin/codecept run
 ```
-
 
 ### Virtual host configure
 

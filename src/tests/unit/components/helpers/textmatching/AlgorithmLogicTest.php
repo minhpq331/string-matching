@@ -18,7 +18,7 @@ class AlgorithmLogicTest extends \Codeception\Test\Unit
     }
 
     // Test search logic
-    protected function testSearhUseAlgorithm()
+    public function testSearhUseAlgorithm()
     {
         if ($this->model === null) {
             return;
@@ -36,5 +36,44 @@ class AlgorithmLogicTest extends \Codeception\Test\Unit
 
         $this->model->pattern = 'a';
         $this->assertEquals(array(11, 15, 46, 51, 65, 89), $this->tester->invokeMethod($this->model, 'searchUseAlgorithm'));
+    }
+
+    public function testSearch()
+    {
+        if ($this->model === null) {
+            return;
+        }
+
+        $baseString = 'Google is a search engine service, google is also an engine for a lot of other services and tools';
+
+        $pattern = 'google';
+        $this->assertEquals(array(1, 36), $this->model->search($baseString, $pattern));
+
+        $pattern = 'Google';
+        $this->assertEquals(array(1, 36), $this->model->search($baseString, $pattern));
+
+        $pattern = 'oo';
+        $this->assertEquals(array(2, 37, 94), $this->model->search($baseString, $pattern));
+
+        $pattern = 'Oo';
+        $this->assertEquals(array(2, 37, 94), $this->model->search($baseString, $pattern));
+
+        $pattern = 'a';
+        $this->assertEquals(array(11, 15, 46, 51, 65, 89), $this->model->search($baseString, $pattern));
+
+        $pattern = 'X';
+        $this->assertEquals(array(), $this->model->search($baseString, $pattern));
+
+        $pattern = 'Sx';
+        $this->assertEquals(array(), $this->model->search($baseString, $pattern));
+
+        $baseString = 'abc';
+        $pattern = 'abcdef';
+        $this->assertEquals(array(), $this->model->search($baseString, $pattern));
+
+        $pattern = '';
+        $pattern = '';
+        $this->assertEquals(array(), $this->model->search($baseString, $pattern));
+
     }
 }

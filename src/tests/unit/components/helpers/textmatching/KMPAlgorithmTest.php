@@ -1,6 +1,7 @@
 <?php
 namespace tests\components\helpers\textmatching;
 
+use app\components\helpers\textmatching\KMPAlgorithm;
 use tests\components\helpers\textmatching\AlgorithmLogicTest;
 
 class KMPAlgorithmTest extends AlgorithmLogicTest
@@ -12,17 +13,10 @@ class KMPAlgorithmTest extends AlgorithmLogicTest
 
     protected function _before()
     {
-        $this->model = $this->getMockBuilder('app\components\helpers\textmatching\KMPAlgorithm')
-            ->getMock();
+        $this->model = new KMPAlgorithm();
     }
 
     protected function _after()
     {
-    }
-
-    // Test search logic
-    public function testSearhUseAlgorithm()
-    {
-        return parent::testSearhUseAlgorithm();
     }
 }

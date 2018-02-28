@@ -1,6 +1,7 @@
 <?php
 namespace tests\components\helpers\textmatching;
 
+use app\components\helpers\textmatching\NaiveAlgorithm;
 use tests\components\helpers\textmatching\AlgorithmLogicTest;
 
 class NaiveAlgorithmTest extends AlgorithmLogicTest
@@ -12,8 +13,7 @@ class NaiveAlgorithmTest extends AlgorithmLogicTest
 
     protected function _before()
     {
-        $this->model = $this->getMockBuilder('app\components\helpers\textmatching\NaiveAlgorithm')
-            ->getMock();
+        $this->model = new NaiveAlgorithm();
     }
 
     protected function _after()
