@@ -75,5 +75,22 @@ class AlgorithmLogicTest extends \Codeception\Test\Unit
         $pattern = '';
         $this->assertEquals(array(), $this->model->search($baseString, $pattern));
 
+        // test search options
+        $this->model->caseSensitive = false;
+        $this->model->matchMultiple = false;
+
+        $baseString = 'Google g';
+        $pattern = 'g';
+        $this->assertEquals(array(1), $this->model->search($baseString, $pattern));
+
+        $this->model->matchMultiple = true;
+        $this->assertEquals(array(1, 4, 8), $this->model->search($baseString, $pattern));
+
+        $this->model->caseSensitive = true;
+        $this->assertEquals(array(4, 8), $this->model->search($baseString, $pattern));
+
+        $this->model->matchMultiple = false;
+        $this->assertEquals(array(4), $this->model->search($baseString, $pattern));
+
     }
 }
