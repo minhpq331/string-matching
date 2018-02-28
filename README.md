@@ -6,10 +6,10 @@ In this demo, only 2 text-matching algorithms are implemented: Naive algorithm a
 
 ## Project Structure
 
-    ci_cd/              contains scripts to initialize project environment and auto deploy process
-    server_config/      contains example web server configs
-    server_log/         contains web server log
-    src/                contains project source code
+    ci_cd/                  contains scripts to initialize project environment and auto deploy process
+    server_config/          contains example web server configs
+    server_log/             contains web server log
+    src/                    contains project source code
         commands/           contains console commands (controllers)
         components/         contains project components such as helpers, assets, widgets, etc...
         config/             contains application configurations
