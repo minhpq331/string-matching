@@ -34,6 +34,10 @@ class NaiveAlgorithm extends BaseTextMatchingAlgorithm
 
             if ($isMatch) {
                 $result[] = $i + 1;
+                if (!$this->matchMultiple) {
+                    // break if get only 1 result
+                    break;
+                }
             }
         }
 
